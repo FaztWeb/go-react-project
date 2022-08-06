@@ -18,13 +18,18 @@ import (
 func main() {
 
 	port := os.Getenv("PORT")
+	mongodb := os.Getenv("MONGODB_URI")
 
 	if port == "" {
 		port = "3000"
 	}
 
+	if mongodb == "" {
+		mongodb = "mongodb://localhost:27017/gomongodb"
+	}
+
 	app := fiber.New()
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017/gomongodb"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb+srv://fazt:faztpassword@cluster0.ynu6g.mongodb.net/?retryWrites=true&w=majority"))
 
 	if err != nil {
 		panic(err)
