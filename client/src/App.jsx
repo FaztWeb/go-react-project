@@ -42,9 +42,11 @@ function App() {
       </form>
 
       <ul>
-        {users.map(user => (
-          <li key={user._id}>{user.name}</li>
-        ))}
+        {users ?
+          users.map(user => (
+            <li key={user._id}>{user.name}</li>
+          )) : <li>{ }</li>
+        }
       </ul>
     </div>
   );
